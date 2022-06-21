@@ -29,7 +29,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${bagsTotal}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -37,7 +37,8 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${donationsTotal}</em>
+
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -95,33 +96,25 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
+            <c:forEach var="entry" items="${institutionDTO}">
+                <li>
+                    <c:set var="institution" value="${entry.key}"/>
+                    <div class="col">
+                        <div class="title">${institution.getName()}</div>
+                        <div class="subtitle">${institution.getDescription()}</div>
+                    </div>
 
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-            </li>
-
+                    <c:if test="${not empty entry.value}">
+                        <c:set var="institution" value="${entry.value}"/>
+                        <div class="col">
+                            <div class="title">${institution.getName()}</div>
+                            <div class="subtitle">${institution.getDescription()}</div>
+                        </div>
+                    </c:if>
+                </li>
+            </c:forEach>
         </ul>
     </div>
-
 </section>
 
 <%@ include file="../fragments/footer.jsp" %>
