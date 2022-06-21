@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="container container--70">
     <%--        <ul class="nav--actions">--%>
     <%--            <li class="logged-user">--%>
