@@ -22,4 +22,9 @@ public class DonationService {
     public Long countAll() {
         return repository.count();
     }
+
+    public void save(Donation donation) {
+        repository.save(donation);
+    }
+
 }

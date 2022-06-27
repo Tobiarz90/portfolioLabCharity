@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entities.Institution;
-import pl.coderslab.charity.repositories.DonationRepository;
 import pl.coderslab.charity.services.DonationService;
 import pl.coderslab.charity.services.InstitutionService;
 
@@ -18,7 +17,7 @@ public class HomeController {
 
     private final DonationService donationService;
 
-    public HomeController(InstitutionService institutionService, DonationRepository donationRepository, DonationService donationService, DonationRepository donationRepository1) {
+    public HomeController(InstitutionService institutionService, DonationService donationService) {
         this.institutionService = institutionService;
         this.donationService = donationService;
     }
