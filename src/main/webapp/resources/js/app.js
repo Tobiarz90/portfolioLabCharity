@@ -198,35 +198,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 summaryTexts[0].innerText = `${quantityValue} worki ${categoryValue.join(", ")} w dobrym stanie`;
                 summaryTexts[1].innerText = `Dla ${institutionValue}`;
 
+                function appendItemsToList(items, list) {
+                    items.forEach(item => {
+                        const li = document.createElement('li');
+                        li.innerText = item;
+
+                        list.appendChild(li);
+                    });
+
+                    return list;
+                }
+
                 const lists = this.$form.querySelectorAll(".summary .form-section--column");
 
                 const address = [streetValue, cityValue, zipCodeValue];
-
-                let
-                    ul = document.createElement("ul");
-
-                // TODO: extract the below code into a function
-                address.forEach(entry => {
-                    const li = document.createElement('li');
-                    li.innerText = entry;
-
-                    ul.appendChild(li);
-                });
-                // ^^
-
-                lists[0].appendChild(ul);
+                let ul = document.createElement("ul");
+                lists[0].appendChild(appendItemsToList(address, ul));
 
                 const deliveryInfo = [pickUpDateValue, pickUpTimeValue, pickUpCommentValue];
-
                 ul = document.createElement("ul");
-                deliveryInfo.forEach(entry => {
-                    const li = document.createElement('li');
-                    li.innerText = entry;
-
-                    ul.appendChild(li);
-                });
-
-                lists[1].appendChild(ul);
+                lists[1].appendChild(appendItemsToList(deliveryInfo, ul));
             }
         }
 
